@@ -1,8 +1,8 @@
 server:
-  port: 8081
+  port: 7901
 
 user:
-  path: http://localhost:8080/findById/
+  path: http://localhost:7900/findById/
 
 spring:
   application:
