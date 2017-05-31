@@ -1,6 +1,7 @@
 package com.masm.ribbon.controller;
 
 import com.masm.ribbon.entity.User;
+import com.masm.ribbon.feignClient.UserFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -21,6 +22,9 @@ public class MovieController {
 
     @Autowired
     private LoadBalancerClient loadBalancerClient;
+
+    @Autowired
+    private UserFeignClient userFeignClient;
 
     @Value("${user.path}")
     private String path;
@@ -55,5 +59,20 @@ public class MovieController {
     public User findById(@PathVariable int id) {
         //return restTemplate.getForObject("http://localhost:7900/findById/" + id, User.class);
         return restTemplate.getForObject("http://provider/findById/" + id, User.class);
+    }
+
+    /**
+     *
+     * @Description: 测试feign
+     * @param    id
+     * @return    返回类型
+     * @author ucs_masiming
+     * @throws
+     * @date 2017/5/31 13:56
+     * @version V1.0
+     */
+    @GetMapping("findById/{id}")
+    public User findById2(@PathVariable int id) {
+        return userFeignClient.findById(id);
     }
 }
