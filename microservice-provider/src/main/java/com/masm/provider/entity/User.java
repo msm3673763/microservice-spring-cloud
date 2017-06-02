@@ -1,5 +1,7 @@
 package com.masm.provider.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.math.BigDecimal;
 
 /**
@@ -7,8 +9,12 @@ import java.math.BigDecimal;
  */
 public class User {
 
+    @ApiModelProperty(value = "主键", hidden = false, notes = "主键，隐藏", required = true, dataType = "Integer")
+    //使用该注解描述是属性信息，当hidden=true时，该属性不会在api中显示
     private int id;
+    @ApiModelProperty(value = "用户名")
     private String username;
+    @ApiModelProperty(value = "姓名")
     private String name;
 
     public int getId() {
@@ -51,7 +57,9 @@ public class User {
         this.balance = balance;
     }
 
+    @ApiModelProperty(value = "年龄")
     private int age;
+    @ApiModelProperty(value = "收入")
     private BigDecimal balance;
 
 
