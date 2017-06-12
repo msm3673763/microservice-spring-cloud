@@ -1,6 +1,6 @@
 ---
 spring:
-  profiles: springcloud1
+#  profiles: springcloud1
   application:
     name: Eureka-Server
 server:
