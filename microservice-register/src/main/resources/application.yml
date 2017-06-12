@@ -1,3 +1,8 @@
+---
+spring:
+  profiles: springcloud1
+  application:
+    name: Eureka-Server
 server:
   port: 8761
 
@@ -11,7 +16,35 @@ security:
 
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://root:123456@localhost:8761/eureka # 安全的注册地址
+     register-with-eureka: false
+     fetch-registry: false
+#    service-url:
+#      defaultZone: http://root:123456@springcloud2:8762/eureka/ # 安全的注册地址
+#  instance:
+#    hostname: springcloud1
+
+#---
+#spring:
+#  profiles: springcloud2
+#  application:
+#    name: Eureka-Server
+
+#server:
+#  port: 8762
+
+# 安全认证的配置
+#security:
+#  basic:
+#    enabled: true
+#  user:
+#    name: root  # 用户名
+#    password: 123456   # 用户密码
+
+#eureka:
+#  client:
+#    # register-with-eureka: false
+#    # fetch-registry: false
+#    service-url:
+#      defaultZone: http://root:123456@springcloud1:8761/eureka/ # 安全的注册地址
+#  instance:
+#    hostname: springcloud2

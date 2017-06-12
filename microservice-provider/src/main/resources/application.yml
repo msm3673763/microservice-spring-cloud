@@ -1,5 +1,5 @@
 server:
-  port: 7902
+  port: 7900
 
 spring:
   datasource:
@@ -24,7 +24,8 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://root:123456@localhost:8761/eureka
+#      defaultZone: http://root:123456@springcloud1:8761/eureka/, http://root:123456@springcloud2:8762/eureka/
+      defaultZone: http://root:123456@localhost:8761/eureka/
   instance:
     status-page-url: http://localhost:${server.port}/swagger-ui.html #配置api接口文档 ${server.port}为该服务的端口号
     prefer-ip-address: true

@@ -1,6 +1,8 @@
 package com.masm.ribbon.controller;
 
 import com.masm.ribbon.entity.User;
+import com.masm.ribbon.feignClient.CustomFeignClient;
+import com.masm.ribbon.feignClient.EurekaFeignClient;
 import com.masm.ribbon.feignClient.UserFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +27,10 @@ public class MovieController {
 
     @Autowired
     private UserFeignClient userFeignClient;
+    @Autowired
+    private CustomFeignClient customFeignClient;
+    @Autowired
+    private EurekaFeignClient eurekaFeignClient;
 
     @Value("${user.path}")
     private String path;
@@ -71,8 +77,19 @@ public class MovieController {
      * @date 2017/5/31 13:56
      * @version V1.0
      */
-    @GetMapping("findById/{id}")
+    @GetMapping("/findById/{id}")
     public User findById2(@PathVariable int id) {
         return userFeignClient.findById(id);
     }
+
+    @GetMapping("/queryUserById/{id}")
+    public User queryUserById(@PathVariable int id) {
+        return customFeignClient.queryUserById(id);
+    }
+
+    @GetMapping("/getServerInfo/{serverName}")
+    public String getServerInfo(@PathVariable String serverName) {
+        return eurekaFeignClient.getServerInfo(serverName);
+    }
+
 }

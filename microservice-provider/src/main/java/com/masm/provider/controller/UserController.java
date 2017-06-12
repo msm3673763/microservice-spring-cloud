@@ -30,4 +30,19 @@ public class UserController {
         return userService.findById(id);
     }
 
+    /**
+     *
+     * @Description: 测试自定义feign配置调用
+     * @param      id
+     * @return    User
+     * @author ucs_masiming
+     * @throws
+     * @date 2017/6/12 10:25
+     * @version V1.0
+     */
+    @GetMapping("/queryUserById/{id}")
+    public User queryUserById(@PathVariable int id) {
+        return userService.findById(id);
+    }
+
 }
